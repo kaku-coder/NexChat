@@ -14,8 +14,20 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "password is required"]
+        // Not required for Google OAuth users
+    },
+    googleId: {
+        type: String,
+        default: null
+    },
+    avatar: {
+        type: String,
+        default: null
+    },
+    refreshToken: {
+        type: String,
+        default: null
     }
-});
+}, { timestamps: true });
 
 export default mongoose.model("User", userSchema);
