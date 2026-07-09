@@ -1,1 +1,72 @@
 @import "tailwindcss";
+
+@theme {
+  --color-app-bg: var(--bg-primary);
+  --color-app-panel: var(--bg-secondary);
+  --color-app-hover: var(--bg-tertiary);
+  --color-app-accent: var(--accent-color);
+  --color-app-accent-hover: var(--accent-hover);
+  --color-app-text: var(--text-primary);
+  --color-app-muted: var(--text-secondary);
+  --color-app-border: var(--border-color);
+  --color-app-bubble-sent: var(--bubble-sent);
+  --color-app-bubble-received: var(--bubble-received);
+}
+
+:root {
+  /* Crimson Noir Theme (Default) */
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0c;
+  --bg-tertiary: #161619;
+  --accent-color: #ef4444;
+  --accent-hover: #f87171;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --border-color: #1a1a1e;
+  --bubble-sent: #dc2626;
+  --bubble-received: #161619;
+}
+
+.theme-whatsapp-dark {
+  /* WhatsApp Dark Theme */
+  --bg-primary: #0b141a;
+  --bg-secondary: #111b21;
+  --bg-tertiary: #202c33;
+  --accent-color: #00a884;
+  --accent-hover: #00d9a6;
+  --text-primary: #e9edef;
+  --text-secondary: #8696a0;
+  --border-color: #222d34;
+  --bubble-sent: #005c4b;
+  --bubble-received: #202c33;
+}
+
+.theme-whatsapp-light {
+  /* WhatsApp Light Theme */
+  --bg-primary: #efeae2;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f5;
+  --accent-color: #008069;
+  --accent-hover: #016b57;
+  --text-primary: #111b21;
+  --text-secondary: #667781;
+  --border-color: #e9edef;
+  --bubble-sent: #d9fdd3;
+  --bubble-received: #ffffff;
+}
+
+/* Custom scrollbars that adapt to themes */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}

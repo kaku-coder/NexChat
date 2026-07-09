@@ -5,12 +5,12 @@ import tokenBlock from "../models/tokenBlocklisting.model.js";
 import getRedisClient from "../config/redis.js";
 import { sendWelcomeEmail, sendLoginNotificationEmail } from "../services/mail.services.js";
 
-// ─── Helper: Access Token (15 min) ───────────────────────────────────────────
+// ─── Helper: Access Token (7 days) ───────────────────────────────────────────
 const generateAccessToken = (userId) => {
     return jwt.sign(
         { id: userId },
         process.env.JSONTOKEN_Secreate,
-        { expiresIn: "15m" }  // Short-lived
+        { expiresIn: "7d" }  // Extended for chat persistence
     );
 };
 
@@ -32,11 +32,11 @@ const issueTokenAndCookie = async (res, user) => {
     user.refreshToken = refreshToken;
     await user.save();
 
-    // Access token → cookie (15 min)
+    // Access token → cookie (7 days)
     res.cookie("token", accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 15 * 60 * 1000,  // 15 minutes
+        maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
     });
 
     // Refresh token → alag cookie (7 days)
@@ -254,7 +254,7 @@ export const refreshTokenController = async (req, res) => {
         res.cookie("token", newAccessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            maxAge: 15 * 60 * 1000,  // 15 min
+            maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
         });
 
         return res.status(200).json({

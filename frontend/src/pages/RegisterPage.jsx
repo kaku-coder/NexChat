@@ -67,7 +67,7 @@ const RegisterPage = () => {
         <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-[500px] bg-zinc-900 overflow-hidden m-2.5 rounded-2xl group">
           {/* Placeholder/Static Image Background */}
           <img 
-            src="/images/auth-placeholder.png" 
+            src="/src/assets/register4.jpeg" 
             alt="NexChat Background" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
